@@ -21,6 +21,18 @@ No production deployment is implied.
 
 ## 2) Global Invariants (Must Hold)
 
+### Verification as access control (binding)
+Verification does not modify accrual or mining rates.
+All humans accrue daily GUCT at a uniform 1:1 rate.
+
+Verification grants ownership and usage rights only:
+- claimability from the aggregated vault/time-safe,
+- holding and transferring,
+- redeeming/using within protocol rules.
+
+Unverified accrual remains recorded in the aggregated vault/time-safe
+without direct ownership or usage rights until verification.
+
 ### 2.1 No reflexive sell-offs / liquidation triggers
 No oracle failure, gas depletion event, or rail-disable condition may trigger:
 - forced asset conversion,
