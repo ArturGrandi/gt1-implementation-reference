@@ -146,6 +146,7 @@ ETH is routed to GasReserve up to targetGas.
 Any ETH in excess of reaching targetGas MUST be refunded in the same transaction.
 
 Delivered GUCT is computed ONLY from retained ETH.
+Refunded ETH buys 0 GUCT (no implicit settlement).
 
 ---
 
