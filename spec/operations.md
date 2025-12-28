@@ -9,7 +9,7 @@ This document defines operational rules for:
 - correctness constraints (enable/disable rules, refund behavior),
 - fund coverage transfer rules that preserve P_next_min invariants.
 
-Genesis parameters (including minGas/targetGas) are defined only in:
+Genesis parameters (including thresholds) are defined only in:
 - spec/genesis.md (canonical).
 
 This file MUST NOT duplicate genesis constants.
@@ -70,6 +70,7 @@ stablecoin settlement may be used for general TC purchase flows,
 while ETH settlement is permitted only under the strict GasReserve-driven enable/disable policy.
 
 Any earlier assumptions that TC purchases are stable-only are non-binding and superseded by this operations specification.
+
 ---
 
 ## 4) Liquidity Coverage Preservation (P_next_min Safety Gate)
@@ -97,7 +98,7 @@ This is a hard safety gate. No exceptions, no partial settlement.
 ## 5) ETH Routing & Refund Rule (v1)
 
 ### 5.1 Routing priority
-All ETH paid for the purchase is routed to GasReserve up to the target threshold (spec/genesis.md).
+All ETH paid for the purchase is routed to GasReserve up to the target threshold defined in spec/genesis.md.
 
 ### 5.2 Refund correctness
 If msg.value exceeds the amount needed to reach the target threshold,
