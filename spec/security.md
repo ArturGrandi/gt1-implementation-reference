@@ -1,174 +1,167 @@
-# GT 1.0 — Security Specification (Stress Cases & Invariants)
+# GT 1.0 — Security Model (Binding)
 
 Status: Binding (implementation scope)
 
-This document enumerates security invariants and mandatory stress cases
-for the GT 1.0 controlled reference implementation.
+This document defines mandatory security invariants, pause/revert rules,
+and required stress cases for GT 1.0.
 
-Genesis parameters are defined only in:
-- spec/genesis.md (canonical).
+All numeric deployment parameters and thresholds are defined ONLY in:
+- spec/genesis.md (canonical)
 
 This file MUST NOT duplicate genesis constants.
 
 ---
 
-## 1) Security Posture (Non-Production)
+## 1) Security Scope
 
-This repository is a controlled reference implementation for research, simulation, and verification only.
-No production deployment is implied.
+GT 1.0 security focuses on preserving:
+- invariants (CR/SR, stability standard, mint-gates),
+- non-reflexive price logic (no cascade behavior),
+- containment under oracle and asset failures,
+- correctness of GasReserve / ETH rail behavior,
+- correctness of fund coverage gates (P_next_min preservation).
 
----
-
-## 2) Global Invariants (Must Hold)
-
-### Verification as access control (binding)
-Verification does not modify accrual or mining rates.
-All humans accrue daily GUCT at a uniform 1:1 rate.
-
-Verification grants ownership and usage rights only:
-- claimability from the aggregated vault/time-safe,
-- holding and transferring,
-- redeeming/using within protocol rules.
-
-Unverified accrual remains recorded in the aggregated vault/time-safe
-without direct ownership or usage rights until verification.
-
-### 2.1 No reflexive sell-offs / liquidation triggers
-No oracle failure, gas depletion event, or rail-disable condition may trigger:
-- forced asset conversion,
-- automatic sell-offs,
-- liquidation logic,
-- reflexive mint adjustments.
-
-### 2.2 Meaning is not defined by interfaces
-Token standards, payment rails (stable vs ETH), and contract interfaces MUST NOT redefine
-economic meaning. The meaning is defined by spec documents.
-
-### 2.3 No social transaction subsidy
-The protocol does NOT subsidize user (“social”) transactions. Users pay their own gas.
-GasReserve is ops infrastructure only.
-
-### 2.4 P_next_min preservation
-Any action that changes fund balances MUST preserve predicted next minimum price logic (P_next_min)
-and associated required System Fund level.
+Non-goals:
+- production hardening guarantees,
+- censorship resistance claims,
+- MEV-proofing as a deliverable of this reference implementation.
 
 ---
 
-## 3) Oracle Security Model (Binding)
+## 2) Binding Invariants (Non-Negotiable)
 
-### 3.1 Oracle role
+The implementation MUST preserve:
+
+1) No forced asset conversion or liquidation logic.
+2) No oracle-driven sell-offs.
+3) No reflexive mint adjustments triggered by price/oracle noise.
+4) Deposit/redeem protocol fees remain 0% (gas only).
+5) Multi-Asset Liquidity + Emergency Asset Segregation (Level 1 + Level 2) is mandatory.
+6) Stablecoin-agnostic behavior (USDT/USDC/DAI): suspension must not affect price logic.
+7) Genesis constants must not be duplicated outside spec/genesis.md.
+
+---
+
+## 3) Pause & Containment Policy (Binding)
+
+### 3.1 Oracle-gated valuation issuance
 Oracles provide reference valuation only.
-They do not:
+
+They do NOT:
 - define economic meaning,
 - trigger automatic sell-offs,
 - enforce liquidation logic.
 
-### 3.2 Oracle failure handling (valuation issuance pause)
-If oracle data is invalid/stale/inconsistent:
-- valuation issuance is paused (no new valuation issuance that depends on oracle),
-- mint is redirected to Time Capital per existing mint-gate logic,
+Oracle failure handling (binding):
+If oracle becomes stale/invalid/inconsistent:
+- valuation issuance is paused,
+- mint is redirected to Time Capital,
 - protocol reference price remains unchanged.
 
-No oracle failure may trigger forced conversion or reflexive price collapse.
+No oracle failure may trigger:
+- forced asset conversion,
+- price collapse,
+- reflexive mint adjustments.
+
+### 3.2 Asset suspension (stablecoin-agnostic)
+If any supported stablecoin is suspended (blacklist risk / depeg / halted transfers):
+- new operations using that asset MUST revert or be paused for that asset only,
+- other assets and rails continue if safe,
+- internal price logic and invariants MUST remain unchanged.
+
+Suspension is an availability constraint, not an economic event.
+
+### 3.3 GasReserve depletion (ops continuity only)
+GasReserve affects protocol operational continuity only.
+
+If GasReserve is low/depleted:
+- ops execution may be delayed,
+- NO economic meaning changes,
+- NO price logic changes,
+- NO mint logic changes except those already defined under oracle failure pause.
+
+Manual top-up restores ops capability.
 
 ---
 
-## 4) Gas Autonomy & GasReserve (Binding)
+## 4) ETH Rail (Time Capital Only) — Mandatory Safety Gates
 
-### 4.1 Manual minimum replenishment
-If GasReserve drops below the minimum threshold (spec/genesis.md),
-the minimum is replenished manually by admin via external ETH transfer.
+### 4.1 Enable/disable gate (GasReserve)
+ETH TC rail is enabled only when:
+GasReserve < targetGas (defined in spec/genesis.md)
 
-No automatic ETH market purchase is required to reach the minimum.
+If GasReserve >= targetGas:
+- ETH rail MUST revert.
 
-### 4.2 Depletion does not change economic state
-GasReserve depletion MUST NOT alter:
-- CR/SR invariants,
-- price logic,
-- mint logic beyond explicitly defined pauses/redirections.
+### 4.2 System Fund coverage gate (P_next_min preservation)
+On ETH-based purchase of q GUCT at internal price P:
 
-Only operational continuity is affected.
-
----
-
-## 5) ETH Time Capital Purchase Rail (Binding)
-
-### 5.1 Enable/disable condition
-ETH rail MUST be enabled only when GasReserve is below target (spec/genesis.md).
-If GasReserve >= target: ETH rail MUST revert.
-
-### 5.2 Oracle dependency
-ETH rail depends on ETH/USD oracle for USD-equivalent valuation.
-If oracle is invalid/stale: ETH rail MUST revert (no partial settlement).
-
-### 5.3 System Fund coverage gate (P_next_min safety gate)
-Upon ETH-based purchase of q GUCT, the protocol MUST secure liquidity coverage from System Fund:
-
+The protocol MUST move USD-equivalent coverage from System Fund to Liquidity Fund:
 ΔF_liq_USD = q * P
 
-This is funded by System Fund (USD accounting), NOT by incoming ETH.
+Funding source is System Fund (USD accounting), NOT incoming ETH.
 
-ETH purchase MUST revert unless System Fund remains sufficient after the transfer:
-
+ETH purchase MUST revert unless:
 F_sys_USD - (q * P) >= F_sys_req_USD(P_next_min)
 
-This is a hard invariant.
+This is a hard safety gate.
 
-### 5.4 ETH routing & refund correctness (v1)
-- ETH retained is routed to GasReserve up to target threshold.
-- Any excess ETH MUST be refunded in the same transaction.
-- GUCT delivered MUST be computed ONLY from retained ETH (refunded ETH buys 0 GUCT).
+### 4.3 Refund correctness (v1)
+If msg.value exceeds the amount needed to reach targetGas:
+- excess ETH MUST be refunded in the same transaction.
 
----
-
-## 6) Mandatory Stress Cases (Test Matrix)
-
-Implementations MUST be testable against the following scenarios.
-
-### 6.1 GasReserve depletion scenarios
-1) GasReserve falls below min threshold → protocol does NOT auto-buy ETH.
-2) Admin tops up GasReserve externally → normal ops resumes.
-3) GasReserve depleted to near-zero → no forced conversions, no price logic change.
-
-### 6.2 ETH rail toggle scenarios
-4) GasReserve < target → ETH rail enabled.
-5) GasReserve == target → ETH rail disabled (revert).
-6) GasReserve > target → ETH rail disabled (revert).
-7) ETH rail purchase brings GasReserve to target → rail is disabled on subsequent calls.
-
-### 6.3 Refund correctness scenarios
-8) msg.value exactly needed to reach target → retain all, refund 0.
-9) msg.value exceeds needed to reach target → retain required, refund remainder in-tx.
-10) Verify delivered GUCT uses retained ETH only (refund does not buy GUCT).
-
-### 6.4 Oracle invalid scenarios
-11) ETH/USD oracle stale/invalid → ETH rail reverts (no partial settlement).
-12) Valuation oracle stale/invalid → valuation issuance pauses; mint redirected to Time Capital; price unchanged.
-
-### 6.5 System Fund coverage gate scenarios
-13) System Fund sufficient: after funding q*P it still satisfies F_sys_req(P_next_min) → purchase allowed.
-14) System Fund insufficient by 1 unit: after funding q*P it drops below requirement → purchase MUST revert.
-15) Verify ΔF_liq_USD recorded/observable for each ETH purchase.
-
-### 6.6 Cross-cases (oracle + gas)
-16) GasReserve below target but oracle invalid → ETH rail MUST revert.
-17) Oracle valid but System Fund gate fails → ETH rail MUST revert.
-18) Oracle failure event does not enable any emergency conversion logic.
+GUCT delivered MUST be computed only from retained ETH.
 
 ---
 
-## 7) Observability Requirements (Recommended)
+## 5) Required Stress Cases (Acceptance Criteria)
 
-Implementations SHOULD emit events or expose views for:
-- rail enabled/disabled state,
-- retained/refunded ETH amounts,
-- System Fund -> Liquidity Fund transfer amount (USD accounting),
-- explicit revert reasons for oracle invalid, rail disabled, fund gate fail.
+The controlled implementation MUST include tests (unit/invariant/fuzz where applicable)
+covering at least the following scenarios.
+
+### 5.1 Oracle failure scenarios
+- stale oracle timestamp -> valuation issuance paused; mint redirected to Time Capital.
+- inconsistent oracle values across feeds -> paused; no sell-offs.
+- oracle returns zero/negative/out-of-range -> paused; no economic changes.
+- oracle recovers -> issuance resumes without price discontinuity.
+
+### 5.2 GasReserve / ETH rail scenarios
+- GasReserve < targetGas -> ETH rail enabled (subject to other gates).
+- GasReserve >= targetGas -> ETH rail reverts.
+- GasReserve below minGas -> no auto-buy requirement; manual top-up path exists.
+- refund path correctness:
+  - retained ETH increases GasReserve up to target,
+  - excess refunded in same tx,
+  - delivered GUCT matches retained ETH only.
+
+### 5.3 System Fund coverage gate scenarios
+- ETH purchase where System Fund coverage is sufficient -> succeeds and transfers q*P coverage.
+- ETH purchase where coverage would violate P_next_min -> reverts.
+- verify ΔF_liq_USD accounting matches q*P exactly (no rounding drift that weakens gates).
+
+### 5.4 Stablecoin suspension scenarios
+- suspend USDT -> USDT operations revert/paused; USDC/DAI remain functional.
+- suspend USDC -> USDC operations revert/paused; others functional.
+- verify price logic unchanged by suspension event.
+
+### 5.5 Emergency Asset Segregation scenarios
+- Level 1 segregation isolates designated assets without affecting price logic.
+- Level 2 segregation isolates high-risk assets; protocol continues with safe assets.
+- ensure segregation cannot be abused to bypass mint-gates or coverage rules.
 
 ---
 
-## 8) References
+## 6) Non-Goals (Explicit)
 
-- spec/genesis.md — canonical deployment parameters
-- spec/operations.md — operational behavior for gas autonomy & ETH rail
-- spec/architecture.md — module map and component boundaries
+- No “profit protection” mechanisms.
+- No liquidation engine.
+- No price stabilization via market ops beyond what the spec defines.
+- No user gas subsidy.
+
+---
+
+## 7) References
+
+- spec/genesis.md — canonical parameters (only source of constants)
+- spec/architecture.md — module boundaries and mandatory gates
+- spec/operations.md — runtime rail rules, routing, pauses
