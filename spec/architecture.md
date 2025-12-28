@@ -110,7 +110,7 @@ Responsibilities:
 
 Hard constraints:
 - protocol does NOT subsidize user transactions,
-- minimum replenishment below minGas is manual admin transfer (external ETH),
+- minimum-threshold replenishment (as defined in spec/genesis.md) is manual admin transfer (external ETH),
 - ETH rail is enabled only when GasReserve < targetGas.
 
 All thresholds are defined in spec/genesis.md.
