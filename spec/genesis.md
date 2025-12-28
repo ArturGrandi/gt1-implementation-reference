@@ -101,6 +101,11 @@ Thresholds are fixed:
 
 If GasReserve < minGas, the minimum is replenished manually by admin (external ETH transfer).
 
+### 8.2 ETH rail routing & refund (v1, binding)
+When the ETH Time Capital purchase rail is used (see spec/operations.md):
+- all ETH retained by the protocol is routed to GasReserve up to targetGas (defined above),
+- any excess ETH (msg.value beyond reaching targetGas) MUST be refunded in the same transaction,
+- delivered GUCT MUST be computed only from the ETH retained (refunded ETH buys 0 GUCT).
 ---
 
 ## 9) Invariants Unaffected
