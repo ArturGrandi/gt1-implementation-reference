@@ -72,6 +72,8 @@ Responsibilities:
 Constraints:
 - does not introduce fees,
 - does not react reflexively to oracle noise.
+- Accrual semantics are uniform across all humans (1:1).
+- Verification affects access and ownership only, not accrual rates.
 
 ### 3.4 Valuation Issuance (Oracle-gated)
 Responsibilities:
