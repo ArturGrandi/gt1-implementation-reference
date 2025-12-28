@@ -62,7 +62,9 @@ Replace any fixed population number with **N0**, where **N0** equals the officia
 
 - **N0 is a deployment parameter**, not a hardcoded constant.
 - Verification remains open-ended.
-- Any verified accounts exceeding **N0** are treated as newborn population and accrue value with coefficient **1 : 1.5** from the moment of verification.
+- All humans accrue daily GUCT at a uniform **1:1 rate**.
+- Verification grants ownership and usage rights (claimability, holding, transferring, redeeming/using within protocol rules),
+  not a higher accrual rate.
 
 ---
 
