@@ -64,6 +64,12 @@ ETH payments are valued in USD-equivalent using an ETH/USD oracle.
 Bonding rules, 111-day constraints, and premium caps remain unchanged.
 Only settlement asset differs (ETH vs stable).
 
+### 3.4 Settlement neutrality (clarification)
+Time Capital purchases are settlement-agnostic at the specification level:
+stablecoin settlement may be used for general TC purchase flows,
+while ETH settlement is permitted only under the strict GasReserve-driven enable/disable policy.
+
+Any earlier assumptions that TC purchases are stable-only are non-binding and superseded by this operations specification.
 ---
 
 ## 4) Liquidity Coverage Preservation (P_next_min Safety Gate)
