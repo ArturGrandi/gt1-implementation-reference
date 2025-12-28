@@ -19,6 +19,17 @@ This repository contains a **controlled reference implementation** of GT 1.0 for
 All protocol start conditions and genesis numbers are defined **exclusively** in:
 
 - `spec/genesis.md`
+  
+### Spec-first rule (binding)
+All binding specifications for this repository live under `/spec`:
+
+- `spec/genesis.md` — canonical genesis and deployment parameters
+- `spec/operations.md` — runtime operational rules (rails, pauses, routing)
+- `spec/security.md` — invariants and mandatory stress cases
+- `spec/architecture.md` — module map and boundaries
+
+Genesis numbers and constants MUST NOT be duplicated outside `/spec`.
+Contracts and docs may reference spec files only.
 
 Genesis constants **must not** be duplicated in other docs or in contract code (only references allowed).
 
