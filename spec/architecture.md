@@ -21,6 +21,8 @@ Non-goals:
 - production deployment,
 - commercial operation,
 - economic redesign discussions.
+- All temporal references inside the protocol are expressed in Grand Time units.
+- Block time or wall-clock time is treated as an external transport signal only.
 
 ---
 
