@@ -17,6 +17,7 @@ This file MUST NOT duplicate genesis constants.
 ---
 
 ## 1) Scope & Constraints (Binding)
+All operational timing (windows, delays, pauses) is evaluated in Grand Time units.
 
 ### 1.1 No social transaction subsidy
 The protocol does NOT subsidize user (“social”) transactions. Users pay their own gas.
