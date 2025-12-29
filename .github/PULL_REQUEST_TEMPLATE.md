@@ -8,6 +8,25 @@
 
 ---
 
+### Temporal Canonicality (Binding)
+
+All protocol parameters, including but not limited to:
+- prediction graphs of minimum growth,
+- valuation trajectories,
+- stability windows,
+- epochal and historical accounting,
+- lifecycle and prehistory calculations,
+
+are defined, measured, and applied **exclusively in Grand Time units**.
+
+No external time systems (UTC, block time, wall-clock time, calendar days)
+may be used for economic meaning, prediction logic, or invariant evaluation.
+
+External time references are permitted **only as transport or interface layers**
+and MUST NOT affect protocol calculations, invariants, or price logic.
+
+
+
 ## Spec alignment (mandatory)
 
 This PR implements behavior defined in:
