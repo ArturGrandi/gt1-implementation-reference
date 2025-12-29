@@ -6,6 +6,7 @@ This document defines the module boundaries and interaction contracts
 for the GT 1.0 controlled reference implementation.
 
 Genesis parameters and numeric constants are defined ONLY in:
+- Time domain is defined in: spec/time_domain.md (binding).
 - spec/genesis.md (canonical).
 
 Other documents may reference genesis values but MUST NOT duplicate them.
