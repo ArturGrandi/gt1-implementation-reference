@@ -13,6 +13,7 @@ Genesis parameters (including thresholds) are defined only in:
 - spec/genesis.md (canonical).
 
 This file MUST NOT duplicate genesis constants.
+Canonical time domain is defined in: spec/time_domain.md (binding).
 
 ---
 
