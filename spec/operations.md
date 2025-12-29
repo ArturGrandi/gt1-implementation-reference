@@ -136,8 +136,8 @@ This section is non-normative (SHOULD), except where marked binding above.
 
 ---
 
-## 8) References
+## 8) References (Binding Links)
 
-- spec/genesis.md — canonical deployment parameters
-- spec/security.md — stress cases and invariants under oracle and gas events
-- spec/architecture.md — module map for GasReserve and ETH rail
+- spec/genesis.md — canonical deployment parameters (only source of constants)
+- spec/architecture.md — module boundaries and mandatory safety gates
+- spec/security.md — binding invariants, pause/revert policy, acceptance stress cases
