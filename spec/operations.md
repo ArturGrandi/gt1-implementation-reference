@@ -1,6 +1,7 @@
 # GT 1.0 — Operations Specification (Gas Autonomy & ETH Rail)
 
 Status: Binding (implementation scope)
+Canonical time domain is defined in: spec/time_domain.md (binding).
 
 This document defines operational rules for:
 - protocol gas autonomy (no social transaction subsidy),
