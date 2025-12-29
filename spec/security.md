@@ -15,6 +15,7 @@ This file MUST NOT duplicate genesis constants.
 ## 1) Security Scope
 
 GT 1.0 security focuses on preserving:
+- Time-based invariants are evaluated exclusively in Grand Time units and are not affected by oracle timestamp drift.
 - invariants (CR/SR, stability standard, mint-gates),
 - non-reflexive price logic (no cascade behavior),
 - containment under oracle and asset failures,
