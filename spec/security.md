@@ -160,6 +160,16 @@ covering at least the following scenarios.
 
 ---
 
+## Acceptance Link (Binding)
+
+All security-related acceptance criteria and required verification surfaces are consolidated in:
+- spec/verification_checklist.md
+
+Implementations that do not satisfy the checklist MUST be treated as non-acceptable,
+even if they compile or pass partial tests.
+
+---
+
 ## 7) References
 
 - spec/genesis.md — canonical parameters (only source of constants)
