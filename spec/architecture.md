@@ -177,8 +177,8 @@ Suspension is handled as an availability constraint, not an economic event.
 
 ---
 
-## 6) References
+## 6) References (Binding Links)
 
-- spec/genesis.md — canonical start conditions and parameters
+- spec/genesis.md — canonical deployment parameters (only source of constants)
 - spec/operations.md — runtime rules for rails, pauses, routing
-- spec/security.md — invariants and mandatory stress tests
+- spec/security.md — mandatory invariants, pause/revert policy, required stress cases
