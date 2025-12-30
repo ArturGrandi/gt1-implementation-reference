@@ -37,6 +37,16 @@ PASS if:
 - spec/operations.md references spec/security.md and spec/architecture.md.
 - spec/security.md references spec/operations.md (gas/ETH rail cases) and spec/architecture.md (module boundaries).
 
+### 1.3 Genesis constants duplication guard (binding)
+
+PASS if:
+- All numeric genesis constants and thresholds appear ONLY in spec/genesis.md.
+- Other spec files reference genesis parameters symbolically (by name), not by value.
+
+FAIL if:
+- Any numeric genesis constant (price, supply, mint, gas threshold, allocation, prehistory length)
+  is duplicated or restated outside spec/genesis.md, even if values match.
+  
 ---
 
 ## 2) Invariants (Must never break)
