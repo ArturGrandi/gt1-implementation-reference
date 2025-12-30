@@ -126,3 +126,12 @@ Acceptance remains defined by:
 
 Any new behavior requires an explicit spec patch approved by the project owner.
 No economic redesign is permitted via contributions.
+
+---
+
+## Consistency rule (binding)
+
+Each verification row in this matrix MUST correspond to at least one
+acceptance item in spec/verification_checklist.md.
+
+Matrix entries without checklist coverage are non-acceptable.
