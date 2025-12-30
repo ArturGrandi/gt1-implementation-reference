@@ -41,6 +41,20 @@ PASS if:
 
 ## 2) Invariants (Must never break)
 
+### 2.X Canonical time domain (Grand Time)
+
+PASS if:
+- all time-based invariants, windows, mint gates, stability periods,
+  prediction graphs, historical and epochal accounting
+  are evaluated exclusively in Grand Time units,
+- external timestamps (block time, oracle time, wall-clock)
+  are used only as transport or ordering signals.
+
+FAIL if:
+- any invariant, prediction, or safety rule
+  is evaluated directly in external or mixed time units,
+- oracle timestamp drift can affect economic meaning or mint logic.
+
 ### 2.1 CR/SR invariants are enforced
 PASS if:
 - contracts expose read-only views for CR/SR state and the system cannot perform actions that violate CR/SR invariants.
