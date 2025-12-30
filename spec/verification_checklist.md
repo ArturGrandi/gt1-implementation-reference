@@ -47,6 +47,27 @@ FAIL if:
 - Any numeric genesis constant (price, supply, mint, gas threshold, allocation, prehistory length)
   is duplicated or restated outside spec/genesis.md, even if values match.
   
+### 1.4 Cross-spec link integrity (binding)
+
+PASS if:
+- spec/architecture.md references:
+  - spec/security.md
+  - spec/operations.md
+- spec/operations.md references:
+  - spec/security.md
+  - spec/architecture.md
+- spec/security.md references:
+  - spec/operations.md
+  - spec/architecture.md
+- spec/verification_matrix.md references:
+  - spec/verification_checklist.md
+  - spec/security.md
+  - spec/operations.md
+  - spec/architecture.md
+
+FAIL if:
+- Any required cross-reference is missing or removed.
+  
 ---
 
 ## 2) Invariants (Must never break)
