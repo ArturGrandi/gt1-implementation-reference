@@ -45,3 +45,14 @@ without explicit prior user approval.
 - forced recovery
 - custodial assumptions
 - state intervention without consent
+  
+---
+
+## Verification & References
+
+Acceptance criteria and verification mapping:
+- spec/verification_checklist.md (UI/AI & Inheritance section)
+- spec/verification_matrix.md (VM-4: INH-1, INH-2, TC-LOCK-1)
+
+Related:
+- spec/security.md (non-confiscation and containment properties)
