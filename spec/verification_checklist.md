@@ -239,3 +239,24 @@ A build is acceptable (PASS) only if:
 
 Any deviation requires a spec patch with explicit project owner approval.
 No economic redesign is permitted via contributions.
+
+---
+
+## 9) UI / AI & Inheritance Verification (v1.0)
+
+PASS if:
+- AI interfaces have NO execution, signing, or state-mutation authority.
+- AI outputs are grounded exclusively via read-only RAG over:
+  - /spec/*.md
+  - security appendix
+  - glossary
+- Inheritance executes ONLY when:
+  - explicitly opted-in by the user, AND
+  - inactivityPeriod ≥ 222 days.
+- No execution path exists for automatic or implicit transfer of GUCT to Time Capital.
+
+FAIL if:
+- AI can mutate protocol state, trigger transactions, or sign messages.
+- AI output is not spec-grounded.
+- Inheritance triggers without explicit prior user consent.
+- Any automatic confiscation or redirection of user GUCT occurs.
