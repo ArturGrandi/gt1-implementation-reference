@@ -118,6 +118,21 @@ Primary modules (canonical names, see spec/architecture.md):
 
 ---
 
+## UI/AI & Inheritance (VM-4)
+
+This section maps the binding UI/AI and inheritance requirements into modules, verification methods,
+observable signals, and pass/fail criteria.
+
+Genesis constants are defined ONLY in spec/genesis.md and must not be duplicated here.
+
+| Req ID | Requirement (Binding) | Modules / Surfaces | Verification Method | Observable Signals | PASS Criteria | FAIL Criteria |
+|---|---|---|---|---|---|---|
+| UIAI-1 | AI interfaces have NO execution, signing, or state-mutation authority. | UI layer (GTP chat), any AI adapter, tx builder, wallet connector, contracts access layer | Manual review + unit tests (negative) | No signer in AI context; no privileged RPC; no tx submission endpoints; tests prove non-executable paths | AI can only generate text/guidance; cannot call submitTx/sign; cannot mutate state | Any path where AI triggers tx, signs, or calls privileged methods |
+| UIAI-2 | AI outputs are grounded exclusively via read-only RAG over spec-only sources. | AI/RAG pipeline, retrieval config | Manual review + integration test | RAG config lists only /spec/*.md (+ glossary + security appendix); citations/anchors are enforced | Prompts cannot pull from web/general memory; responses cite spec sources; non-grounded output is blocked/flagged | AI can answer without spec grounding or uses external sources |
+| INH-1 | Inheritance executes ONLY with explicit opt-in and inactivityPeriod ≥ 222 days. | Inheritance module (off-chain logic and/or contract), user config storage | Unit + simulation | Event/log for opt-in; timestamp/inactivity checks; execution trace | Transfer executes only after opt-in AND inactivity ≥ 222 days | Any execution without opt-in or before 222 days |
+| INH-2 | No automatic transfer/confiscation occurs if no heirs are defined. | Inheritance module, default policy | Unit + simulation | State shows “no heirs”; no transfer events | If heirs not set => no transfers occur | Any default sweep/redirect when no heirs set |
+| TC-LOCK-1 | No path exists for automatic or implicit transfer of user GUCT to Time Capital. | Core accounting, Time Capital, transfer hooks | Invariant + fuzz | Invariant checks on state transitions; revert reasons | All paths require explicit user authorization; invariant holds across fuzz | Any path that moves user GUCT to TC without explicit prior user approval |
+
 ## Binding note
 
 This matrix is binding as a planning and verification mapping.
