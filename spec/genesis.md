@@ -61,11 +61,18 @@ Unverified Human Pool: **29,997,000,000 GUCT**, held as a single aggregated asse
 Replace any fixed population number with **N0**, where **N0** equals the official global human population at the moment of system launch.
 
 - **N0 is a deployment parameter**, not a hardcoded constant.
-- Verification remains open-ended.
+- Verification remains open-ended and is not capped by N0.
 - All humans accrue daily GUCT at a uniform **1:1 rate**.
 - Verification grants ownership and usage rights (claimability, holding, transferring, redeeming/using within protocol rules),
   not a higher accrual rate.
+  
+Population updates after deployment are NOT automatic.
 
+Any adjustment to population assumptions MUST:
+- be performed via DAO multisig,
+- rely on official global statistics,
+- occur no more than once per year.
+  
 ---
 
 ## 6) Initial Price (Deployment Parameter)
