@@ -1,45 +1,78 @@
 # GT 1.0 — Tests & Verification
 
-## Test directory convention
+This directory contains the test suite for the GT 1.0 controlled reference implementation.
 
-This repository uses `test/` as the canonical test directory,
-aligned with Foundry / Solidity ecosystem conventions.
+Status: Binding (verification scope)
 
-Any reference to `tests/` in documentation MUST be interpreted
-as referring to the `test/` directory.
-
-This directory contains tests for the GT 1.0 controlled reference implementation.
-
-## Purpose
-
-Tests MUST verify correctness against:
-- `spec/verification_checklist.md`,
-- `spec/security.md`,
-- `spec/operations.md`.
+The goal of tests is to verify correctness against:
+- spec/verification_checklist.md (acceptance gate),
+- spec/verification_matrix.md (requirements × modules × methods),
+- spec/security.md (stress cases),
+- spec/operations.md (rails & routing),
+- spec/architecture.md (module boundaries).
 
 Passing tests is not sufficient if invariants are violated.
 
+---
+
+## Canonical directory convention
+
+This repository uses `test/` as the canonical test directory (Foundry / Solidity convention).
+
+Any documentation that mentions `tests/` MUST be interpreted as referring to `test/`.
+
+---
+
 ## Required test categories
 
-Implementations SHOULD include:
-- unit tests (functional correctness),
-- invariant tests (CR/SR, pause behavior, coverage gates),
-- fuzz tests (oracle noise, ETH refund correctness, fund edge cases).
+### 1) Unit tests — `test/unit/`
+Purpose:
+- verify deterministic logic of isolated functions/modules.
+Examples:
+- fund accounting moves,
+- revert conditions for gates,
+- view functions and event emission correctness.
 
-## Binding rules
+### 2) Invariant tests — `test/invariant/`
+Purpose:
+- continuously assert invariants never break under sequences of actions.
+Must cover at minimum:
+- CR/SR invariants,
+- stability standard,
+- mint-gates,
+- “no forced conversion / no liquidation” invariant.
 
-- Tests must not encode hardcoded genesis constants.
-- Tests must reference parameters supplied at deployment time.
-- Failing an invariant test invalidates the implementation, even if unit tests pass.
+### 3) Fuzz tests — `test/fuzz/`
+Purpose:
+- property-based testing for edge cases and adversarial inputs.
+Must cover at minimum:
+- oracle invalid/stale/inconsistent inputs,
+- ETH rail refund correctness,
+- System Fund coverage gate (P_next_min preservation),
+- stablecoin suspension containment.
 
-## Acceptance
+### 4) Simulation tests — `test/sim/`
+Purpose:
+- higher-level scenario simulations (multi-step flows).
+Must cover at minimum:
+- oracle failure → pause → mint redirection → recovery,
+- GasReserve depletion → ETH rail enable/disable behavior,
+- asset suspension sequences without price logic changes.
 
-An implementation is acceptable only if:
-- all invariant tests pass,
-- all pause/revert conditions behave as specified,
-- observability surfaces required by the checklist are verifiable.
+---
 
-## Reference
+## Non-goals
 
-See:
-- `spec/verification_checklist.md`
+- No production security guarantees.
+- No MEV-proofing claims.
+- No economic redesign proposals.
+
+---
+
+## Acceptance rule
+
+A build is acceptable only if it satisfies:
+- spec/verification_checklist.md (PASS), and
+- the coverage described in spec/verification_matrix.md is implemented.
+
+Any deviation requires a spec patch with explicit project owner approval.
