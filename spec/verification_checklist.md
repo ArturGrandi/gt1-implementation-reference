@@ -244,6 +244,8 @@ No economic redesign is permitted via contributions.
 
 ## 9) UI / AI & Inheritance Verification (v1.0)
 
+Trace IDs (verification matrix): UIAI-1, UIAI-2, INH-1, INH-2, TC-LOCK-1
+
 PASS if:
 - AI interfaces have NO execution, signing, or state-mutation authority.
 - AI outputs are grounded exclusively via read-only RAG over:
