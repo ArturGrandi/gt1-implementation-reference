@@ -185,3 +185,5 @@ Suspension is handled as an availability constraint, not an economic event.
 - spec/genesis.md — canonical deployment parameters (only source of constants)
 - spec/operations.md — runtime rules for rails, pauses, routing
 - spec/security.md — mandatory invariants, pause/revert policy, required stress cases
+- spec/ui_ai_model.md — AI & UI interaction constraints
+- spec/inheritance.md — opt-in inheritance model (v1.0)
