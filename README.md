@@ -1,65 +1,105 @@
-# GT 1.0 — Controlled Reference Implementation (Non-Production)
+# Grand Time Protocol (GT 1.0)
+### Controlled Reference Implementation
 
-This repository contains a **controlled reference implementation** of GT 1.0 for:
-- research,
-- simulation,
-- testnet-style validation,
-- formal verification alignment.
-
-**Non-production scope:**
-- No mainnet / production deployments are provided or implied.
-- No investment, fundraising, or profit mechanisms are defined or supported here.
-- No operational guarantees.
+This repository contains the **controlled reference implementation** of
+**Grand Time Protocol (GT 1.0)** — a time-based macroeconomic protocol
+where **human time is treated as an economic primitive**.
 
 ---
 
-## Start Here
+## What this repository is
 
-### Canonical Genesis (single source of truth)
-All protocol start conditions and genesis numbers are defined **exclusively** in:
+- A **spec-first**, verification-driven implementation of GT 1.0
+- A reference for **auditing, research, and simulation**
+- A foundation for long-horizon economic systems research
 
-- `spec/genesis.md`
-  
-### Spec-first rule (binding)
-All binding specifications for this repository live under `/spec`:
-
-- `spec/genesis.md` — canonical genesis and deployment parameters
-- `spec/operations.md` — runtime operational rules (rails, pauses, routing)
-- `spec/security.md` — invariants and mandatory stress cases
-- `spec/architecture.md` — module map and boundaries
-
-Genesis numbers and constants MUST NOT be duplicated outside `/spec`.
-Contracts and docs may reference spec files only.
-
-Genesis constants **must not** be duplicated in other docs or in contract code (only references allowed).
-
-### Protocol Spec (spec-first)
-The binding GT 1.0 formular / protocol specification lives in:
-
-- `gt1-formular-standard` (spec-first reference)
-
-This repository exists to implement the spec under a controlled, non-production posture.
+This repository is intended for:
+- senior protocol engineers,
+- auditors and formal verification specialists,
+- researchers and academics,
+- long-term institutional reviewers.
 
 ---
 
-## Repository Structure
+## What this repository is NOT
 
-- `spec/` — controlled spec overlays and genesis placement (canonical)
-- `contracts/` — reference contracts (non-production)
-- `interfaces/` — Solidity interfaces aligned to the spec
-- `docs/` — implementation notes, simulation guidance, verification notes
+- ❌ Not a production deployment
+- ❌ Not a commercial product
+- ❌ Not a tokenomics playground
+- ❌ Not a speculative experiment
 
----
-
-## Rules of Engagement
-
-- Do not propose economic redesign here (CR/SR, 333-day stability, mint gates, Time Capital, bonding caps, multi-asset liquidity are fixed).
-- Pull requests must be implementation-focused and aligned to the spec.
-- Any change touching genesis parameters must be proposed **only** via `spec/genesis.md`.
+Economic invariants are **fixed and non-negotiable**.
 
 ---
 
-## Related Repositories
+## Source of truth (important)
 
-- `grand-time-architecture` — research-only architecture and prior art (no code)
-- `gt1-formular-standard` — GT 1.0 spec-first protocol standard (reference)
+GT 1.0 follows strict **spec-first discipline**.
+
+Canonical documents live in `/spec`:
+
+- `spec/genesis.md` — deployment parameters & genesis
+- `spec/architecture.md` — module boundaries & safety gates
+- `spec/operations.md` — runtime behavior (rails, pauses, routing)
+- `spec/security.md` — invariants & stress cases
+- `spec/time_domain.md` — canonical Grand Time units
+- `spec/verification_checklist.md` — acceptance criteria
+- `spec/verification_matrix.md` — requirements × modules × tests
+
+**Code must follow spec.  
+Spec does not follow code.**
+
+---
+
+## How to start (recommended)
+
+If you are new here, begin with:
+
+➡️ **[`docs/START_HERE.md`](docs/START_HERE.md)**
+
+It provides a 10-minute guided path through the system.
+
+---
+
+## Tests & verification
+
+Correctness is validated through:
+- invariant tests,
+- fuzzing,
+- time-domain simulations,
+- explicit acceptance criteria.
+
+Passing tests is not sufficient if invariants are violated.
+
+---
+
+## Contributions
+
+Contributions are welcome **only within defined scope**.
+
+Before opening an Issue or PR, read:
+- `CONTRIBUTION_GUIDELINES.md`
+- `.github/ISSUE_TEMPLATE/`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+
+Economic redesign proposals are not accepted in GT 1.0.
+
+---
+
+## Status
+
+**GT 1.0 status:**  
+✔ Specs frozen  
+✔ Security model defined  
+✔ Verification framework in place  
+✔ Controlled implementation in progress  
+
+---
+
+## Final note
+
+Grand Time Protocol explores an alternative economic foundation
+where **time is not a UI artifact, but a first-class economic unit**.
+
+If you are interested in correctness, invariants, and long-horizon systems —
+you are in the right place.
