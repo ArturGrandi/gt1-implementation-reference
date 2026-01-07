@@ -232,3 +232,5 @@ even if it compiles or passes partial tests.
 - spec/time_domain.md — canonical time domain definition
 - spec/architecture.md — module boundaries and mandatory gates
 - spec/operations.md — runtime rail rules, routing, pauses
+- spec/ui_ai_model.md — AI interface constraints (read-only, spec-grounded)
+- spec/inheritance.md — opt-in inheritance (222d inactivity), no confiscation
