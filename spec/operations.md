@@ -24,7 +24,11 @@ All operational timing (windows, delays, pauses) is evaluated in Grand Time unit
 ### 1.1 No social transaction subsidy
 The protocol does NOT subsidize user (“social”) transactions. Users pay their own gas.
 
-### 1.2 Protocol fees unchanged
+### 1.2 Population accounting (v1.0 constraint)
+The protocol does not track births or deaths automatically in v1.0.
+Population is treated as a deployment and governance parameter only.
+
+### 1.3 Protocol fees unchanged
 Deposit/redeem protocol fees remain 0% (gas only).
 No fee model changes are permitted by contributions.
 
