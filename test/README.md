@@ -1,5 +1,13 @@
 # GT 1.0 — Tests & Verification
 
+## Test directory convention
+
+This repository uses `test/` as the canonical test directory,
+aligned with Foundry / Solidity ecosystem conventions.
+
+Any reference to `tests/` in documentation MUST be interpreted
+as referring to the `test/` directory.
+
 This directory contains tests for the GT 1.0 controlled reference implementation.
 
 ## Purpose
