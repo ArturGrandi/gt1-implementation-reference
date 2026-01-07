@@ -57,3 +57,14 @@ All outputs MUST include clear disclaimers:
 - AI-driven automation
 - AI custodianship
 - AI governance authority
+---
+
+## Verification & References
+
+Acceptance criteria and verification mapping:
+- spec/verification_checklist.md (UI/AI section)
+- spec/verification_matrix.md (VM-4: UIAI-1, UIAI-2)
+
+Related:
+- spec/security.md (oracle and containment constraints)
+- spec/time_domain.md (canonical time domain)
