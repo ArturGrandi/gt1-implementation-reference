@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <text x="60" y="110" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#111111">
+    GT 1.0 — Gas Depleted Path (SVG placeholder)
+  </text>
+  <text x="60" y="170" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#444444">
+    TODO: Replace with final diagram. No numbers. No tokenomics. No formulas.
+  </text>
+  <text x="60" y="220" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#666666">
+    Concept: GasReserve low → ops continuity impact only → manual top-up restores ops; no economic logic changes.
+  </text>
+</svg>
