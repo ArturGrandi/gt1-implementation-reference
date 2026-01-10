@@ -10,20 +10,21 @@ Genesis parameters and numeric constants are defined ONLY in:
 - spec/genesis.md (canonical).
 
 Other documents may reference genesis values but MUST NOT duplicate them.
-
-Visual overview: see docs/diagrams/architecture-overview.svg and docs/diagrams/README.md
-
-## Diagrams (conceptual)
-
-These are conceptual SVG diagrams (no numbers, no formulas). They provide instant system boundary comprehension:
-
-- docs/diagrams/architecture-overview.svg
-- docs/diagrams/funds-flow.svg
-- docs/diagrams/oracle-failure-path.svg
-- docs/diagrams/gas-depleted-path.svg
-- docs/diagrams/stablecoin-suspended-path.svg
   
 ---
+
+## Visual Architecture Overview
+
+The high-level system structure and module boundaries are illustrated in the following diagram:
+
+- [`architecture-overview.svg`](../docs/diagrams/architecture-overview.svg)
+
+The diagram is conceptual only:
+- no numeric parameters,
+- no tokenomics,
+- no formulas.
+
+It defines system boundaries, on-chain vs off-chain separation, and mandatory control paths.
 
 ## 1) Purpose & Scope
 
