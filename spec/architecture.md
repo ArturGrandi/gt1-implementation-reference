@@ -11,6 +11,8 @@ Genesis parameters and numeric constants are defined ONLY in:
 
 Other documents may reference genesis values but MUST NOT duplicate them.
 
+Visual overview: see docs/diagrams/architecture-overview.svg and docs/diagrams/README.md
+
 ---
 
 ## 1) Purpose & Scope
