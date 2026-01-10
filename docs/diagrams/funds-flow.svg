@@ -1,12 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#ffffff"/>
-  <text x="60" y="110" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#111111">
-    GT 1.0 — Funds Flow (SVG placeholder)
-  </text>
-  <text x="60" y="170" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#444444">
-    TODO: Replace with final diagram. No numbers. No tokenomics. No formulas.
-  </text>
-  <text x="60" y="220" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#666666">
-    Concept: System Fund → Liquidity Fund coverage transfer + Time Capital flows + emergency segregation boundaries.
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .t { font: 16px Arial, sans-serif; fill: #111; }
+      .h { font: 22px Arial, sans-serif; font-weight: 700; fill: #111; }
+      .s { font: 14px Arial, sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2; rx: 14; }
+      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; rx: 12; }
+      .edge { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 6 6; }
+      .tag { font: 13px Arial, sans-serif; fill: #555; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="52" class="h">GT 1.0 — Funds Flow (High-Level)</text>
+  <text x="40" y="78" class="s">No numbers. No formulas. Flows are directional and conceptual only. See spec/* for rules.</text>
+
+  <!-- On-chain boundary -->
+  <rect x="30" y="110" width="1140" height="600" class="box"/>
+  <text x="50" y="145" class="t">On-chain accounting domain</text>
+
+  <!-- Core / Treasury -->
+  <rect x="70" y="190" width="320" height="170" class="sub"/>
+  <text x="90" y="225" class="t">Core / Treasury Accounting</text>
+  <text x="90" y="255" class="s">- internal ledgers</text>
+  <text x="90" y="278" class="s">- mint allocation gates</text>
+  <text x="90" y="301" class="s">- CR/SR & stability invariants</text>
+
+  <!-- Funds -->
+  <rect x="450" y="190" width="700" height="250" class="sub"/>
+  <text x="470" y="225" class="t">Funds / Ledgers (USD-equivalent accounting)</text>
+
+  <rect x="480" y="255" width="200" height="70" class="box"/>
+  <text x="500" y="295" class="t">System Fund</text>
+  <text x="500" y="318" class="tag">(coverage source)</text>
+
+  <rect x="710" y="255" width="200" height="70" class="box"/>
+  <text x="730" y="295" class="t">Liquidity Fund</text>
+  <text x="730" y="318" class="tag">(coverage target)</text>
+
+  <rect x="940" y="255" width="180" height="70" class="box"/>
+  <text x="960" y="295" class="t">Stability</text>
+  <text x="960" y="318" class="tag">(standard)</text>
+
+  <rect x="480" y="345" width="240" height="70" class="box"/>
+  <text x="500" y="387" class="t">Time Capital</text>
+  <text x="500" y="410" class="tag">(inventory)</text>
+
+  <rect x="740" y="345" width="380" height="70" class="box"/>
+  <text x="760" y="387" class="t">Emergency Asset Segregation</text>
+  <text x="760" y="410" class="tag">(Level 1 + Level 2)</text>
+
+  <!-- Users / External assets -->
+  <rect x="70" y="420" width="320" height="130" class="sub"/>
+  <text x="90" y="455" class="t">External assets (users)</text>
+  <text x="90" y="485" class="s">- stablecoins (agnostic)</text>
+  <text x="90" y="508" class="s">- ETH (ops rail only)</text>
+
+  <!-- Flows -->
+  <path d="M 390 255 L 480 290" class="edge"/>
+  <text x="398" y="240" class="tag">deposit / redeem (0% fee)</text>
+
+  <path d="M 390 495 L 480 380" class="edge"/>
+  <text x="400" y="468" class="tag">purchase from Time Capital</text>
+
+  <path d="M 680 290 L 710 290" class="edge"/>
+  <text x="635" y="280" class="tag">coverage move</text>
+
+  <path d="M 720 380 L 740 380" class="edge"/>
+  <text x="705" y="370" class="tag">isolate assets (no price impact)</text>
+
+  <!-- Notes -->
+  <text x="70" y="610" class="s">Notes:</text>
+  <text x="70" y="635" class="s">- System Fund → Liquidity Fund coverage move is mandatory for ETH rail safety gating.</text>
+  <text x="70" y="658" class="s">- Emergency segregation isolates assets without changing internal price logic.</text>
+  <text x="70" y="681" class="s">- Stable suspension is an availability event, not an economic event.</text>
 </svg>
