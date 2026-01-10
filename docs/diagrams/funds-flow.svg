@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
   <defs>
     <style>
       .t { font: 16px Arial, sans-serif; fill: #111; }
       .h { font: 22px Arial, sans-serif; font-weight: 700; fill: #111; }
       .s { font: 14px Arial, sans-serif; fill: #333; }
+      .tag { font: 13px Arial, sans-serif; fill: #555; }
       .box { fill: #fff; stroke: #111; stroke-width: 2; }
       .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; }
       .edge { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#arrow); }
-      .dash { stroke-dasharray: 6 6; }
-      .tag { font: 13px Arial, sans-serif; fill: #555; }
+      .dash { stroke-dasharray: 8 6; }
     </style>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
       <path d="M0,0 L12,6 L0,12 Z" fill="#111"/>
@@ -16,65 +16,80 @@
   </defs>
 
   <text x="40" y="52" class="h">GT 1.0 — Funds Flow (High-Level)</text>
-  <text x="40" y="78" class="s">No numbers. No formulas. Flows are directional and conceptual only. See spec/* for rules.</text>
+  <text x="40" y="78" class="s">No numbers. No formulas. Conceptual flows only. See spec documents for binding rules.</text>
 
   <!-- On-chain boundary -->
-  <rect x="30" y="110" width="1140" height="600" class="box" rx="14"/>
-  <text x="50" y="145" class="t">On-chain accounting domain</text>
+  <rect x="50" y="120" width="1100" height="600" class="box" rx="18"/>
+  <text x="75" y="155" class="t">On-chain accounting domain</text>
 
-  <!-- Core / Treasury -->
-  <rect x="70" y="190" width="320" height="170" class="sub" rx="12"/>
-  <text x="90" y="225" class="t">Core / Treasury Accounting</text>
-  <text x="90" y="255" class="s">- internal ledgers</text>
-  <text x="90" y="278" class="s">- mint allocation gates</text>
-  <text x="90" y="301" class="s">- CR/SR &amp; stability invariants</text>
+  <!-- Core / Treasury accounting -->
+  <rect x="90" y="190" width="350" height="140" class="sub" rx="14"/>
+  <text x="115" y="225" class="t">Core and Treasury Accounting</text>
+  <text x="115" y="255" class="s">- internal ledgers</text>
+  <text x="115" y="280" class="s">- mint allocation gates</text>
+  <text x="115" y="305" class="s">- invariant enforcement</text>
 
-  <!-- Funds -->
-  <rect x="450" y="190" width="700" height="250" class="sub" rx="12"/>
-  <text x="470" y="225" class="t">Funds / Ledgers (USD-equivalent accounting)</text>
+  <!-- System Fund -->
+  <rect x="520" y="190" width="290" height="140" class="sub" rx="14"/>
+  <text x="545" y="225" class="t">System Fund (USD accounting)</text>
+  <text x="545" y="255" class="s">- supports price floor logic</text>
+  <text x="545" y="280" class="s">- funds coverage gates</text>
 
-  <rect x="480" y="255" width="200" height="70" class="box" rx="12"/>
-  <text x="500" y="295" class="t">System Fund</text>
-  <text x="500" y="318" class="tag">(coverage source)</text>
+  <!-- Liquidity Fund -->
+  <rect x="860" y="190" width="260" height="140" class="sub" rx="14"/>
+  <text x="885" y="225" class="t">Liquidity Fund (USD accounting)</text>
+  <text x="885" y="255" class="s">- liquidity coverage ledger</text>
+  <text x="885" y="280" class="s">- multi-asset settlement support</text>
 
-  <rect x="710" y="255" width="200" height="70" class="box" rx="12"/>
-  <text x="730" y="295" class="t">Liquidity Fund</text>
-  <text x="730" y="318" class="tag">(coverage target)</text>
+  <!-- Time Capital -->
+  <rect x="90" y="390" width="350" height="140" class="sub" rx="14"/>
+  <text x="115" y="425" class="t">Time Capital (protocol-native)</text>
+  <text x="115" y="455" class="s">- inventory source for purchases</text>
+  <text x="115" y="480" class="s">- mint redirection destination</text>
 
-  <rect x="940" y="255" width="180" height="70" class="box" rx="12"/>
-  <text x="960" y="295" class="t">Stability</text>
-  <text x="960" y="318" class="tag">(standard)</text>
+  <!-- Vault / Time Safe -->
+  <rect x="520" y="390" width="290" height="140" class="sub" rx="14"/>
+  <text x="545" y="425" class="t">Vault / Time Safe (aggregated)</text>
+  <text x="545" y="455" class="s">- unverified accrual record</text>
+  <text x="545" y="480" class="s">- claim after verification</text>
 
-  <rect x="480" y="345" width="240" height="70" class="box" rx="12"/>
-  <text x="500" y="387" class="t">Time Capital</text>
-  <text x="500" y="410" class="tag">(inventory)</text>
+  <!-- Stability Fund -->
+  <rect x="860" y="390" width="260" height="140" class="sub" rx="14"/>
+  <text x="885" y="425" class="t">Stability Fund (stability window)</text>
+  <text x="885" y="455" class="s">- stability standard enforcement</text>
+  <text x="885" y="480" class="s">- non-reflexive behavior</text>
 
-  <rect x="740" y="345" width="380" height="70" class="box" rx="12"/>
-  <text x="760" y="387" class="t">Emergency Asset Segregation</text>
-  <text x="760" y="410" class="tag">(Level 1 + Level 2)</text>
-
-  <!-- Users / External assets -->
-  <rect x="70" y="420" width="320" height="130" class="sub" rx="12"/>
-  <text x="90" y="455" class="t">External assets (users)</text>
-  <text x="90" y="485" class="s">- stablecoins (agnostic)</text>
-  <text x="90" y="508" class="s">- ETH (ops rail only)</text>
+  <!-- Emergency Segregation -->
+  <rect x="90" y="565" width="1030" height="120" class="sub" rx="14"/>
+  <text x="115" y="605" class="t">Emergency Asset Segregation (Level 1 and Level 2)</text>
+  <text x="115" y="635" class="s">- isolates suspended or high-risk assets</text>
+  <text x="115" y="660" class="s">- does not change internal price logic</text>
 
   <!-- Flows -->
-  <path d="M 390 255 L 480 290" class="edge"/>
-  <text x="398" y="240" class="tag">deposit / redeem (0% fee)</text>
+  <path d="M 440 260 L 520 260" class="edge"/>
+  <text x="455" y="245" class="tag">accounting transfer</text>
 
-  <path d="M 390 495 L 480 380" class="edge"/>
-  <text x="400" y="468" class="tag">purchase from Time Capital</text>
+  <path d="M 810 260 L 860 260" class="edge"/>
+  <text x="820" y="245" class="tag">coverage ledger</text>
 
-  <path d="M 680 290 L 710 290" class="edge"/>
-  <text x="635" y="280" class="tag">coverage move</text>
+  <path d="M 265 330 L 265 390" class="edge"/>
+  <text x="280" y="365" class="tag">mint redirect</text>
 
-  <path d="M 720 380 L 740 380" class="edge"/>
-  <text x="705" y="370" class="tag">isolate assets (no price impact)</text>
+  <path d="M 665 330 L 665 390" class="edge"/>
+  <text x="680" y="365" class="tag">record accrual</text>
 
-  <!-- Notes -->
-  <text x="70" y="610" class="s">Notes:</text>
-  <text x="70" y="635" class="s">- System Fund → Liquidity Fund coverage move is mandatory for ETH rail safety gating.</text>
-  <text x="70" y="658" class="s">- Emergency segregation isolates assets without changing internal price logic.</text>
-  <text x="70" y="681" class="s">- Stable suspension is an availability event, not an economic event.</text>
+  <path d="M 1010 330 L 1010 390" class="edge"/>
+  <text x="1025" y="365" class="tag">stability gating</text>
+
+  <!-- ETH rail special rule -->
+  <path d="M 660 460 L 860 460" class="edge"/>
+  <text x="690" y="445" class="tag">coverage move on ETH TC purchase</text>
+
+  <path d="M 665 460 L 665 565" class="edge dash"/>
+  <text x="680" y="540" class="tag">segregation is containment only</text>
+
+  <!-- Off-chain boundary note -->
+  <rect x="50" y="35" width="1100" height="0" fill="none" stroke="none"/>
+  <path d="M 50 100 L 1150 100" class="edge dash" marker-end=""/>
+  <text x="40" y="110" class="tag">Off-chain UI and RAG assistant are outside funds accounting (transport only)</text>
 </svg>
