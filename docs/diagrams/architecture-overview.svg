@@ -1,175 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
-  <defs>
-    <style>
-      .title { font: 700 34px Arial, Helvetica, sans-serif; fill: #111; }
-      .sub   { font: 400 16px Arial, Helvetica, sans-serif; fill: #444; }
-      .h2    { font: 700 18px Arial, Helvetica, sans-serif; fill: #111; }
-      .txt   { font: 400 14px Arial, Helvetica, sans-serif; fill: #222; }
-      .note  { font: 400 12px Arial, Helvetica, sans-serif; fill: #555; }
-      .box   { fill: #fff; stroke: #111; stroke-width: 2; rx: 14; ry: 14; }
-      .soft  { fill: #fff; stroke: #666; stroke-width: 1.5; rx: 14; ry: 14; }
-      .dash  { fill: #fff; stroke: #111; stroke-width: 2; stroke-dasharray: 8 6; rx: 16; ry: 16; }
-      .arrow { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#mEnd); }
-      .darr  { stroke: #111; stroke-width: 2; fill: none; stroke-dasharray: 6 6; marker-end: url(#mEnd); }
-      .muted { stroke: #666; }
-      .pill  { fill: #f3f3f3; stroke: #111; stroke-width: 1.5; rx: 18; ry: 18; }
-    </style>
-
-    <marker id="mEnd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
-    </marker>
-  </defs>
-
-  <!-- Canvas -->
   <rect x="0" y="0" width="1400" height="900" fill="#ffffff"/>
 
-  <!-- Header -->
-  <text x="60" y="70" class="title">GT 1.0 — Architecture Overview (System Boundaries)</text>
-  <text x="60" y="102" class="sub">No numbers. No formulas. No tokenomics. One diagram = boundaries + mandatory paths.</text>
+  <text x="60" y="70" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#111">
+    GT 1.0 — Architecture Overview (System Boundaries)
+  </text>
+  <text x="60" y="102" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#444">
+    No numbers. No formulas. No tokenomics. One diagram = boundaries + mandatory paths.
+  </text>
 
   <!-- ON-CHAIN boundary -->
-  <rect x="60" y="140" width="980" height="700" class="dash"/>
-  <text x="90" y="175" class="h2">ON-CHAIN (Controlled Reference Implementation)</text>
-  <text x="90" y="198" class="note">Binding behavior is defined by /spec/*.md. Genesis constants are defined only in spec/genesis.md.</text>
+  <rect x="60" y="140" width="980" height="700" fill="#fff" stroke="#111" stroke-width="2" stroke-dasharray="8 6" rx="16" ry="16"/>
+  <text x="90" y="175" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">ON-CHAIN (Controlled Reference Implementation)</text>
+  <text x="90" y="198" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555">
+    Binding behavior is defined by /spec/*.md. Genesis constants are defined only in spec/genesis.md.
+  </text>
 
   <!-- OFF-CHAIN boundary -->
-  <rect x="1080" y="140" width="260" height="700" class="dash"/>
-  <text x="1110" y="175" class="h2">OFF-CHAIN</text>
-  <text x="1110" y="198" class="note">UI + RAG Assistant (Read-only AI + Guided Actions)</text>
+  <rect x="1080" y="140" width="260" height="700" fill="#fff" stroke="#111" stroke-width="2" stroke-dasharray="8 6" rx="16" ry="16"/>
+  <text x="1110" y="175" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">OFF-CHAIN</text>
+  <text x="1110" y="198" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555">
+    UI + RAG Assistant (Read-only AI + Guided Actions)
+  </text>
 
   <!-- Off-chain blocks -->
-  <rect x="1100" y="240" width="220" height="110" class="soft"/>
-  <text x="1120" y="270" class="h2">Protocol UI (Chat)</text>
-  <text x="1120" y="295" class="txt">Guided actions only</text>
-  <text x="1120" y="318" class="txt">No keys, no signing</text>
+  <rect x="1100" y="240" width="220" height="110" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="1120" y="270" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111">Protocol UI (Chat)</text>
+  <text x="1120" y="295" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Guided actions only</text>
+  <text x="1120" y="318" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">No keys, no signing</text>
 
-  <rect x="1100" y="380" width="220" height="150" class="soft"/>
-  <text x="1120" y="410" class="h2">RAG Assistant (GPT)</text>
-  <text x="1120" y="435" class="txt">Spec-grounded answers</text>
-  <text x="1120" y="458" class="txt">Read-only analytics</text>
-  <text x="1120" y="481" class="txt">No state mutation</text>
+  <rect x="1100" y="380" width="220" height="150" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="1120" y="410" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111">RAG Assistant (GPT)</text>
+  <text x="1120" y="435" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Spec-grounded answers</text>
+  <text x="1120" y="458" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Read-only analytics</text>
+  <text x="1120" y="481" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">No state mutation</text>
 
-  <rect x="1100" y="560" width="220" height="120" class="soft"/>
-  <text x="1120" y="590" class="h2">Off-chain Inputs</text>
-  <text x="1120" y="615" class="txt">Oracle publishers</text>
-  <text x="1120" y="638" class="txt">DAO multisig ops</text>
+  <rect x="1100" y="560" width="220" height="120" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="1120" y="590" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111">Off-chain Inputs</text>
+  <text x="1120" y="615" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Oracle publishers</text>
+  <text x="1120" y="638" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">DAO multisig ops</text>
 
-  <!-- On-chain major areas -->
   <!-- Core contracts -->
-  <rect x="90" y="240" width="420" height="260" class="box"/>
-  <text x="110" y="270" class="h2">Core Contracts</text>
+  <rect x="90" y="240" width="420" height="260" fill="#fff" stroke="#111" stroke-width="2" rx="14" ry="14"/>
+  <text x="110" y="270" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Core Contracts</text>
 
-  <rect x="120" y="295" width="170" height="70" class="soft"/>
-  <text x="135" y="325" class="txt">Token (GUCT)</text>
-  <text x="135" y="348" class="note">Interface only</text>
+  <rect x="120" y="295" width="170" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="135" y="325" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Token (GUCT)</text>
+  <text x="135" y="348" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Interface only</text>
 
-  <rect x="310" y="295" width="170" height="70" class="soft"/>
-  <text x="325" y="325" class="txt">Treasury (DAO)</text>
-  <text x="325" y="348" class="note">Allocations / approvals</text>
+  <rect x="310" y="295" width="170" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="325" y="325" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Treasury (DAO)</text>
+  <text x="325" y="348" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Allocations / approvals</text>
 
-  <rect x="120" y="385" width="170" height="85" class="soft"/>
-  <text x="135" y="415" class="txt">Vault / Time Safe</text>
-  <text x="135" y="438" class="note">Unverified accrual</text>
-  <text x="135" y="458" class="note">Claim on verification</text>
+  <rect x="120" y="385" width="170" height="85" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="135" y="415" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Vault / Time Safe</text>
+  <text x="135" y="438" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Unverified accrual</text>
+  <text x="135" y="458" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Claim on verification</text>
 
-  <rect x="310" y="385" width="170" height="85" class="soft"/>
-  <text x="325" y="415" class="txt">Time Capital</text>
-  <text x="325" y="438" class="note">Mint redirect sink</text>
-  <text x="325" y="458" class="note">Purchase inventory</text>
+  <rect x="310" y="385" width="170" height="85" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="325" y="415" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Time Capital</text>
+  <text x="325" y="438" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Mint redirect sink</text>
+  <text x="325" y="458" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Purchase inventory</text>
 
   <!-- Funds -->
-  <rect x="540" y="240" width="470" height="260" class="box"/>
-  <text x="560" y="270" class="h2">Funds (USD-accounting ledgers)</text>
+  <rect x="540" y="240" width="470" height="260" fill="#fff" stroke="#111" stroke-width="2" rx="14" ry="14"/>
+  <text x="560" y="270" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Funds (USD-accounting ledgers)</text>
 
-  <rect x="570" y="295" width="180" height="70" class="soft"/>
-  <text x="585" y="325" class="txt">System Fund</text>
-  <text x="585" y="348" class="note">Coverage gate source</text>
+  <rect x="570" y="295" width="180" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="585" y="325" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">System Fund</text>
+  <text x="585" y="348" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Coverage gate source</text>
 
-  <rect x="770" y="295" width="200" height="70" class="soft"/>
-  <text x="785" y="325" class="txt">Liquidity Fund</text>
-  <text x="785" y="348" class="note">Coverage destination</text>
+  <rect x="770" y="295" width="200" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="785" y="325" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Liquidity Fund</text>
+  <text x="785" y="348" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Coverage destination</text>
 
-  <rect x="570" y="385" width="180" height="85" class="soft"/>
-  <text x="585" y="415" class="txt">Stability Bucket</text>
-  <text x="585" y="438" class="note">Stability standard</text>
-  <text x="585" y="458" class="note">Mint-gates</text>
+  <rect x="570" y="385" width="180" height="85" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="585" y="415" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Stability Bucket</text>
+  <text x="585" y="438" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Stability standard</text>
+  <text x="585" y="458" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Mint-gates</text>
 
-  <rect x="770" y="385" width="200" height="85" class="soft"/>
-  <text x="785" y="415" class="txt">Emergency Segregation</text>
-  <text x="785" y="438" class="note">Level 1 + Level 2</text>
-  <text x="785" y="458" class="note">Isolation only</text>
+  <rect x="770" y="385" width="200" height="85" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="785" y="415" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Emergency Segregation</text>
+  <text x="785" y="438" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Level 1 + Level 2</text>
+  <text x="785" y="458" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Isolation only</text>
 
   <!-- Asset registry + Oracles -->
-  <rect x="90" y="525" width="420" height="190" class="box"/>
-  <text x="110" y="555" class="h2">AssetRegistry + Oracles</text>
+  <rect x="90" y="525" width="420" height="190" fill="#fff" stroke="#111" stroke-width="2" rx="14" ry="14"/>
+  <text x="110" y="555" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">AssetRegistry + Oracles</text>
 
-  <rect x="120" y="580" width="170" height="70" class="soft"/>
-  <text x="135" y="610" class="txt">AssetRegistry</text>
-  <text x="135" y="633" class="note">stablecoin-agnostic</text>
+  <rect x="120" y="580" width="170" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="135" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">AssetRegistry</text>
+  <text x="135" y="633" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">stablecoin-agnostic</text>
 
-  <rect x="310" y="580" width="170" height="70" class="soft"/>
-  <text x="325" y="610" class="txt">Oracle Adapter</text>
-  <text x="325" y="633" class="note">Reference-only feeds</text>
+  <rect x="310" y="580" width="170" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="325" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">Oracle Adapter</text>
+  <text x="325" y="633" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Reference-only feeds</text>
 
-  <rect x="120" y="660" width="360" height="40" class="pill"/>
-  <text x="140" y="686" class="note">Oracle failure ⇒ pause issuance + redirect mint; NO sell-offs; price unchanged</text>
+  <rect x="120" y="660" width="360" height="40" fill="#f3f3f3" stroke="#111" stroke-width="1.5" rx="18" ry="18"/>
+  <text x="140" y="686" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">
+    Oracle failure ⇒ pause issuance + redirect mint; NO sell-offs; price unchanged
+  </text>
 
   <!-- GasReserve -->
-  <rect x="540" y="525" width="470" height="190" class="box"/>
-  <text x="560" y="555" class="h2">GasReserve (Ops Only)</text>
+  <rect x="540" y="525" width="470" height="190" fill="#fff" stroke="#111" stroke-width="2" rx="14" ry="14"/>
+  <text x="560" y="555" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">GasReserve (Ops Only)</text>
 
-  <rect x="570" y="580" width="220" height="70" class="soft"/>
-  <text x="585" y="610" class="txt">GasReserve (ETH/WETH)</text>
-  <text x="585" y="633" class="note">Protocol ops only</text>
+  <rect x="570" y="580" width="220" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="585" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">GasReserve (ETH/WETH)</text>
+  <text x="585" y="633" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Protocol ops only</text>
 
-  <rect x="800" y="580" width="190" height="70" class="soft"/>
-  <text x="815" y="610" class="txt">ETH TC Rail Toggle</text>
-  <text x="815" y="633" class="note">Enable/disable gate</text>
+  <rect x="800" y="580" width="190" height="70" fill="#fff" stroke="#666" stroke-width="1.5" rx="14" ry="14"/>
+  <text x="815" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222">ETH TC Rail Toggle</text>
+  <text x="815" y="633" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">Enable/disable gate</text>
 
-  <rect x="570" y="660" width="420" height="40" class="pill"/>
-  <text x="590" y="686" class="note">No social tx subsidy. Users pay their own gas. Ops continuity only.</text>
+  <rect x="570" y="660" width="420" height="40" fill="#f3f3f3" stroke="#111" stroke-width="1.5" rx="18" ry="18"/>
+  <text x="590" y="686" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">
+    No social tx subsidy. Users pay their own gas. Ops continuity only.
+  </text>
 
-  <!-- Pause / redirect paths (top pills) -->
-  <rect x="90" y="740" width="920" height="80" class="soft"/>
-  <text x="110" y="770" class="h2">Mandatory pause / redirect behaviors</text>
-  <text x="110" y="795" class="note">Mint-gate pauses & redirects; ETH rail toggle; asset suspension containment. No forced conversions.</text>
-
-  <!-- Arrows -->
-  <!-- UI to on-chain interactions (off-chain boundary crossing) -->
-  <path d="M 1100 300 C 1020 300, 980 300, 920 300" class="darr"/>
-  <text x="945" y="286" class="note">calls / reads</text>
-
-  <path d="M 1100 450 C 1030 450, 980 450, 920 450" class="darr"/>
-  <text x="945" y="436" class="note">RAG (spec-grounded)</text>
-
-  <!-- Oracle publishers to oracle adapter (off-chain to on-chain) -->
-  <path d="M 1100 615 C 1030 615, 980 615, 480 615" class="darr"/>
-  <text x="965" y="600" class="note">feeds (reference-only)</text>
-
-  <!-- AssetRegistry/Oracle Adapter to Core/Valuation (conceptual) -->
-  <path d="M 390 615 C 460 615, 520 520, 620 470" class="arrow"/>
-  <text x="460" y="560" class="note">reference valuation & gating</text>
-
-  <!-- Coverage transfer: System Fund -> Liquidity Fund -->
-  <path d="M 660 330 C 700 330, 730 330, 780 330" class="arrow"/>
-  <text x="665" y="312" class="note">coverage transfer</text>
-
-  <!-- GasReserve affects ETH rail toggle -->
-  <path d="M 680 615 C 720 615, 760 615, 800 615" class="arrow"/>
-  <text x="700" y="600" class="note">threshold gate</text>
-
-  <!-- ETH rail toggle interacts with Time Capital -->
-  <path d="M 800 615 C 720 700, 520 720, 420 470" class="arrow"/>
-  <text x="610" y="720" class="note">ETH TC purchase (conditional)</text>
-
-  <!-- Oracle failure pill indicates pause/redirect to Time Capital -->
-  <path d="M 300 680 C 300 710, 320 740, 330 740" class="darr"/>
-  <text x="250" y="728" class="note">pause issuance</text>
-
-  <!-- Mint redirect to Time Capital (conceptual) -->
-  <path d="M 260 820 C 300 820, 330 820, 360 470" class="darr"/>
-  <text x="190" y="840" class="note">mint redirected (pause cases)</text>
-
-  <!-- Footer note -->
-  <text x="60" y="870" class="note">Diagram is descriptive for boundaries and mandatory paths; implementation details live in /spec/*.md.</text>
+  <!-- Footer -->
+  <text x="60" y="870" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#555">
+    Diagram is descriptive for boundaries and mandatory paths; implementation details live in /spec/*.md.
+  </text>
 </svg>
