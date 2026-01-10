@@ -31,7 +31,7 @@ No economic logic changes are permitted.
 
 ---
 
-## Source of truth (important)
+## Canonical Specification Set
 
 ### Controlled Reference Implementation
 
