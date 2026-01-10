@@ -31,6 +31,8 @@ Non-goals:
 - production hardening guarantees,
 - censorship resistance claims,
 - MEV-proofing as a deliverable of this reference implementation.
+  
+Visual risk paths: see docs/diagrams/oracle-failure-path.svg, docs/diagrams/gas-depleted-path.svg, and docs/diagrams/stablecoin-suspended-path.svg
 
 ---
 
