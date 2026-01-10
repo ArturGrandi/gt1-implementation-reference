@@ -4,8 +4,8 @@
       .t { font: 16px Arial, sans-serif; fill: #111; }
       .h { font: 22px Arial, sans-serif; font-weight: 700; fill: #111; }
       .s { font: 14px Arial, sans-serif; fill: #333; }
-      .box { fill: #fff; stroke: #111; stroke-width: 2; rx: 14; }
-      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; rx: 12; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2; }
+      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; }
       .edge { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#arrow); }
       .dash { stroke-dasharray: 6 6; }
       .tag { font: 13px Arial, sans-serif; fill: #555; }
@@ -19,42 +19,42 @@
   <text x="40" y="78" class="s">No numbers. No formulas. Flows are directional and conceptual only. See spec/* for rules.</text>
 
   <!-- On-chain boundary -->
-  <rect x="30" y="110" width="1140" height="600" class="box"/>
+  <rect x="30" y="110" width="1140" height="600" class="box" rx="14"/>
   <text x="50" y="145" class="t">On-chain accounting domain</text>
 
   <!-- Core / Treasury -->
-  <rect x="70" y="190" width="320" height="170" class="sub"/>
+  <rect x="70" y="190" width="320" height="170" class="sub" rx="12"/>
   <text x="90" y="225" class="t">Core / Treasury Accounting</text>
   <text x="90" y="255" class="s">- internal ledgers</text>
   <text x="90" y="278" class="s">- mint allocation gates</text>
-  <text x="90" y="301" class="s">- CR/SR & stability invariants</text>
+  <text x="90" y="301" class="s">- CR/SR &amp; stability invariants</text>
 
   <!-- Funds -->
-  <rect x="450" y="190" width="700" height="250" class="sub"/>
+  <rect x="450" y="190" width="700" height="250" class="sub" rx="12"/>
   <text x="470" y="225" class="t">Funds / Ledgers (USD-equivalent accounting)</text>
 
-  <rect x="480" y="255" width="200" height="70" class="box"/>
+  <rect x="480" y="255" width="200" height="70" class="box" rx="12"/>
   <text x="500" y="295" class="t">System Fund</text>
   <text x="500" y="318" class="tag">(coverage source)</text>
 
-  <rect x="710" y="255" width="200" height="70" class="box"/>
+  <rect x="710" y="255" width="200" height="70" class="box" rx="12"/>
   <text x="730" y="295" class="t">Liquidity Fund</text>
   <text x="730" y="318" class="tag">(coverage target)</text>
 
-  <rect x="940" y="255" width="180" height="70" class="box"/>
+  <rect x="940" y="255" width="180" height="70" class="box" rx="12"/>
   <text x="960" y="295" class="t">Stability</text>
   <text x="960" y="318" class="tag">(standard)</text>
 
-  <rect x="480" y="345" width="240" height="70" class="box"/>
+  <rect x="480" y="345" width="240" height="70" class="box" rx="12"/>
   <text x="500" y="387" class="t">Time Capital</text>
   <text x="500" y="410" class="tag">(inventory)</text>
 
-  <rect x="740" y="345" width="380" height="70" class="box"/>
+  <rect x="740" y="345" width="380" height="70" class="box" rx="12"/>
   <text x="760" y="387" class="t">Emergency Asset Segregation</text>
   <text x="760" y="410" class="tag">(Level 1 + Level 2)</text>
 
   <!-- Users / External assets -->
-  <rect x="70" y="420" width="320" height="130" class="sub"/>
+  <rect x="70" y="420" width="320" height="130" class="sub" rx="12"/>
   <text x="90" y="455" class="t">External assets (users)</text>
   <text x="90" y="485" class="s">- stablecoins (agnostic)</text>
   <text x="90" y="508" class="s">- ETH (ops rail only)</text>
