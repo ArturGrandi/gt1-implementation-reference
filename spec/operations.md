@@ -16,6 +16,8 @@ Genesis parameters (including thresholds) are defined only in:
 This file MUST NOT duplicate genesis constants.
 Canonical time domain is defined in: spec/time_domain.md (binding).
 
+Visual ops map: see docs/diagrams/funds-flow.svg and docs/diagrams/README.md
+
 ---
 
 ## 1) Scope & Constraints (Binding)
