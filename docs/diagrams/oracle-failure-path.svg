@@ -1,13 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
   <defs>
     <style>
       .t { font: 16px Arial, sans-serif; fill: #111; }
       .h { font: 22px Arial, sans-serif; font-weight: 700; fill: #111; }
       .s { font: 14px Arial, sans-serif; fill: #333; }
-      .box { fill: #fff; stroke: #111; stroke-width: 2; rx: 14; }
-      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; rx: 12; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2; }
+      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; }
       .edge { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#arrow); }
-      .bad { fill: #fff; stroke: #111; stroke-width: 2; rx: 14; }
       .tag { font: 13px Arial, sans-serif; fill: #555; }
     </style>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
@@ -16,47 +15,52 @@
   </defs>
 
   <text x="40" y="52" class="h">GT 1.0 — Oracle Failure Path (Containment)</text>
-  <text x="40" y="78" class="s">Binding behavior: pause issuance + redirect mint. No forced conversions. No sell-offs.</text>
+  <text x="40" y="78" class="s">Binding behavior: pause issuance and redirect mint. No forced conversions. No sell-offs.</text>
 
-  <!-- Trigger -->
-  <rect x="40" y="120" width="520" height="140" class="sub"/>
-  <text x="60" y="155" class="t">Trigger conditions (oracle invalid)</text>
-  <text x="60" y="185" class="s">- stale timestamp</text>
-  <text x="60" y="208" class="s">- inconsistent feeds</text>
-  <text x="60" y="231" class="s">- missing / out-of-range answer</text>
+  <!-- Trigger block -->
+  <rect x="70" y="150" width="620" height="160" class="sub" rx="14"/>
+  <text x="95" y="190" class="t">Trigger conditions (oracle invalid)</text>
+  <text x="95" y="225" class="s">- stale timestamp</text>
+  <text x="95" y="250" class="s">- inconsistent feeds</text>
+  <text x="95" y="275" class="s">- missing or out-of-range answer</text>
 
-  <!-- Oracle Adapter -->
-  <rect x="640" y="120" width="520" height="140" class="box"/>
-  <text x="660" y="155" class="t">Oracle Adapter (read-only valuation)</text>
-  <text x="660" y="185" class="s">validates freshness & consistency</text>
-  <text x="660" y="208" class="s">does not define economic meaning</text>
+  <!-- Oracle adapter -->
+  <rect x="770" y="150" width="360" height="160" class="sub" rx="14"/>
+  <text x="795" y="190" class="t">Oracle Adapter (read-only valuation)</text>
+  <text x="795" y="225" class="s">validates freshness and consistency</text>
+  <text x="795" y="250" class="s">normalizes feeds</text>
+  <text x="795" y="275" class="s">provides reference valuation only</text>
 
-  <path d="M 560 190 L 640 190" class="edge"/>
-  <text x="575" y="178" class="tag">invalid → signal</text>
+  <!-- Arrow trigger -> oracle adapter -->
+  <path d="M 690 230 L 770 230" class="edge"/>
+  <text x="700" y="215" class="tag">detect invalid</text>
 
-  <!-- Pause -->
-  <rect x="40" y="310" width="520" height="150" class="box"/>
-  <text x="60" y="345" class="t">Valuation Issuance</text>
-  <text x="60" y="375" class="s">Action: PAUSE issuance</text>
-  <text x="60" y="398" class="s">Effect: no new valuation outputs</text>
+  <!-- Containment actions -->
+  <rect x="70" y="360" width="1060" height="320" class="box" rx="14"/>
+  <text x="95" y="405" class="t">Containment actions (mandatory)</text>
 
-  <rect x="640" y="310" width="520" height="150" class="box"/>
-  <text x="660" y="345" class="t">Mint Engine</text>
-  <text x="660" y="375" class="s">Action: redirect mint → Time Capital</text>
-  <text x="660" y="398" class="s">No reflexive adjustment</text>
+  <!-- Action boxes -->
+  <rect x="110" y="450" width="300" height="160" class="sub" rx="14"/>
+  <text x="135" y="490" class="t">Pause valuation issuance</text>
+  <text x="135" y="525" class="s">- issuancePaused = true</text>
+  <text x="135" y="550" class="s">- no issuance outputs while invalid</text>
 
-  <path d="M 300 260 L 300 310" class="edge"/>
-  <path d="M 900 260 L 900 310" class="edge"/>
+  <rect x="450" y="450" width="340" height="160" class="sub" rx="14"/>
+  <text x="475" y="490" class="t">Redirect mint to Time Capital</text>
+  <text x="475" y="525" class="s">- mint redirected (per spec)</text>
+  <text x="475" y="550" class="s">- no reflexive mint adjustment</text>
 
-  <!-- Price unchanged -->
-  <rect x="40" y="510" width="1120" height="90" class="sub"/>
-  <text x="60" y="548" class="t">Internal / reference price remains unchanged</text>
-  <text x="60" y="575" class="s">Oracle failure must not trigger price collapse, sell-offs, forced conversion, or liquidation.</text>
+  <rect x="830" y="450" width="300" height="160" class="sub" rx="14"/>
+  <text x="855" y="490" class="t">Keep internal price unchanged</text>
+  <text x="855" y="525" class="s">- no forced conversion</text>
+  <text x="855" y="550" class="s">- no sell-offs</text>
 
-  <path d="M 300 460 L 300 510" class="edge"/>
-  <path d="M 900 460 L 900 510" class="edge"/>
+  <!-- Arrow oracle adapter -> containment -->
+  <path d="M 950 310 L 950 360" class="edge"/>
+  <text x="965" y="340" class="tag">invalid signal</text>
 
-  <!-- Explicit non-events -->
-  <rect x="40" y="620" width="1120" height="70" class="bad"/>
-  <text x="60" y="662" class="t">MUST NOT happen: forced asset conversion • liquidation logic • oracle-driven sell-offs • reflexive mint changes</text>
+  <!-- Guardrails -->
+  <text x="95" y="640" class="s">Hard non-goals during oracle failure:</text>
+  <text x="95" y="665" class="s">- no liquidation or forced conversion logic</text>
+  <text x="95" y="690" class="s">- no price collapse behavior triggered by oracle</text>
 </svg>
