@@ -1,12 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#ffffff"/>
-  <text x="60" y="110" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#111111">
-    GT 1.0 — Stablecoin Suspended Path (SVG placeholder)
-  </text>
-  <text x="60" y="170" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#444444">
-    TODO: Replace with final diagram. No numbers. No tokenomics. No formulas.
-  </text>
-  <text x="60" y="220" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#666666">
-    Concept: one asset suspended → only that rail/asset pauses → other assets continue; price logic unchanged.
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .t { font: 16px Arial, sans-serif; fill: #111; }
+      .h { font: 22px Arial, sans-serif; font-weight: 700; fill: #111; }
+      .s { font: 14px Arial, sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2; }
+      .sub { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; }
+      .edge { stroke: #111; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .tag { font: 13px Arial, sans-serif; fill: #555; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="52" class="h">GT 1.0 — Stablecoin Suspended Path (Containment)</text>
+  <text x="40" y="78" class="s">Binding behavior: asset-level pause only. Other rails continue if safe. Price logic unchanged.</text>
+
+  <!-- Trigger -->
+  <rect x="70" y="140" width="530" height="170" class="sub" rx="14"/>
+  <text x="95" y="180" class="t">Trigger conditions (asset suspended)</text>
+  <text x="95" y="215" class="s">- transfer halted or blocked</text>
+  <text x="95" y="240" class="s">- blacklist risk</text>
+  <text x="95" y="265" class="s">- depeg or market halt</text>
+
+  <!-- AssetRegistry -->
+  <rect x="660" y="140" width="470" height="170" class="sub" rx="14"/>
+  <text x="685" y="180" class="t">AssetRegistry and Controls</text>
+  <text x="685" y="215" class="s">- mark asset as suspended</text>
+  <text x="685" y="240" class="s">- disable only flows using that asset</text>
+  <text x="685" y="265" class="s">- keep other assets available if safe</text>
+
+  <path d="M 600 225 L 660 225" class="edge"/>
+  <text x="615" y="210" class="tag">suspension signal</text>
+
+  <!-- Containment -->
+  <rect x="70" y="350" width="1060" height="330" class="box" rx="14"/>
+  <text x="95" y="395" class="t">Containment actions (mandatory)</text>
+
+  <rect x="110" y="440" width="330" height="170" class="sub" rx="14"/>
+  <text x="135" y="480" class="t">Pause only affected asset flows</text>
+  <text x="135" y="515" class="s">- stable-in and stable-out for suspended asset revert</text>
+  <text x="135" y="540" class="s">- no cross-contamination to other assets</text>
+
+  <rect x="470" y="440" width="320" height="170" class="sub" rx="14"/>
+  <text x="495" y="480" class="t">Continue other rails if safe</text>
+  <text x="495" y="515" class="s">- other stable assets continue if not suspended</text>
+  <text x="495" y="540" class="s">- ETH rail behavior unchanged</text>
+
+  <rect x="820" y="440" width="310" height="170" class="sub" rx="14"/>
+  <text x="845" y="480" class="t">Invariants unchanged</text>
+  <text x="845" y="515" class="s">- internal price logic unchanged</text>
+  <text x="845" y="540" class="s">- no forced conversions</text>
+
+  <path d="M 895 310 L 895 350" class="edge"/>
+  <text x="910" y="335" class="tag">apply containment</text>
+
+  <text x="95" y="640" class="s">Hard non-goals during stable suspension:</text>
+  <text x="95" y="665" class="s">- no liquidation logic</text>
+  <text x="95" y="690" class="s">- no reflexive mint or price adjustment</text>
 </svg>
