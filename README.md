@@ -1,4 +1,38 @@
 # Grand Time Protocol (GT 1.0)
+
+# GT 1.0 — Controlled Reference Implementation
+
+## Canonical Research Reference
+
+This repository supports the published research paper:
+
+**Time as a Non-Monetary Economic Primitive**  
+DOI: https://doi.org/10.5281/zenodo.18190386
+
+Status: research-only, spec-first economic protocol.  
+No production deployment. No investment offering.
+
+---
+
+## Documentation Freeze (GT 1.0)
+
+This repository represents a frozen documentation snapshot for GT 1.0.
+
+- Economic invariants are fixed.
+- Genesis parameters are fixed.
+- Architecture boundaries are fixed.
+
+Changes after this point may only be:
+- clarifications,
+- additional diagrams,
+- verification artifacts.
+
+No economic logic changes are permitted.
+
+---
+
+## Source of truth (important)
+
 ### Controlled Reference Implementation
 
 This repository contains the **controlled reference implementation** of
