@@ -228,6 +228,14 @@ even if it compiles or passes partial tests.
 
 ---
 
+## Diagrams (risk paths)
+
+Conceptual risk-path diagrams (no numbers, no formulas):
+
+- docs/diagrams/oracle-failure-path.svg
+- docs/diagrams/gas-depleted-path.svg
+- docs/diagrams/stablecoin-suspended-path.svg
+  
 ## 7) References
 
 - spec/genesis.md — canonical parameters (only source of constants)
