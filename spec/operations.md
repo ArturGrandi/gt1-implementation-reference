@@ -145,6 +145,12 @@ This section is non-normative (SHOULD), except where marked binding above.
 
 ---
 
+## Diagram (ops path)
+
+Conceptual diagram for ops continuity (no numbers, no formulas):
+
+- docs/diagrams/gas-depleted-path.svg
+  
 ## 8) References (Binding Links)
 
 - spec/genesis.md — canonical deployment parameters (only source of constants)
