@@ -13,6 +13,16 @@ Other documents may reference genesis values but MUST NOT duplicate them.
 
 Visual overview: see docs/diagrams/architecture-overview.svg and docs/diagrams/README.md
 
+## Diagrams (conceptual)
+
+These are conceptual SVG diagrams (no numbers, no formulas). They provide instant system boundary comprehension:
+
+- docs/diagrams/architecture-overview.svg
+- docs/diagrams/funds-flow.svg
+- docs/diagrams/oracle-failure-path.svg
+- docs/diagrams/gas-depleted-path.svg
+- docs/diagrams/stablecoin-suspended-path.svg
+  
 ---
 
 ## 1) Purpose & Scope
