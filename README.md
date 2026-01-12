@@ -95,6 +95,19 @@ It provides a 10-minute guided path through the system.
 
 ---
 
+## Research Review (Single Entry Point)
+
+All technical review, critique, and research discussion for GT 1.0  
+is consolidated in a **single GitHub Issue**:
+
+➡️ **Research Review & Critical Questions**  
+https://github.com/ArturGrandi/gt1-implementation-reference/issues/1
+
+Please do **not** open additional issues.  
+This repository follows a **spec-first, review-driven** process.
+
+---
+
 ## Tests & verification
 
 Correctness is validated through:
