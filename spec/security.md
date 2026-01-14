@@ -208,6 +208,39 @@ covering at least the following scenarios.
 
 ---
 
+## S3 Clarifications (Freeze-Safe)
+
+This section adds **clarifications only**. It does not introduce new economic logic.
+If a detail is not explicitly specified elsewhere, it remains **undefined**.
+
+### S3-C1 — Non-negotiable invariants
+
+GT 1.0 defines a finite set of **economic and logical invariants** (see this document and related invariant statements in the specification).
+These invariants are **non-negotiable**:
+
+- No operation, mode switch, pause, or failure containment path may violate them.
+- If an invariant cannot be preserved under a given condition, the system must **refuse the transition** or enter a **safe halt / pause** state (as defined in `spec/operations.md`).
+
+### S3-C2 — Oracle failure / staleness is criterion-based
+
+Oracle-related failure containment is **criterion-based**, not discretionary:
+
+- The system must enter the oracle-failure containment path only when **explicit failure criteria** are satisfied.
+- Until those criteria are satisfied, oracle input must be treated as **available but not authoritative** (read-only boundary remains unchanged).
+
+If the specification does not define concrete criteria (e.g., staleness thresholds), they are **undefined** and must be introduced only as a **clarification** (not as new economics).
+
+### S3-C3 — Invariants preserved per failure scenario (scenario × invariant)
+
+For each failure containment scenario (oracle failure, gas depletion, stablecoin suspension, etc.), the specification must provide:
+
+- Which invariants must remain preserved in that scenario.
+- Which operations are allowed / disallowed in that scenario (see `spec/operations.md`).
+
+This is intended to be reflected in verification artifacts (e.g., `spec/verification_matrix.md`) as a **scenario × invariant** mapping.
+
+---
+
 ## 6) Explicit Non-Goals
 
 - No profit protection mechanisms.
