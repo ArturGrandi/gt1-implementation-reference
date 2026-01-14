@@ -100,6 +100,31 @@ Such proposals will be closed without discussion.
 
 ---
 
+## AI-Assisted Review (Optional, Strict Mode)
+
+AI-assisted reviews (e.g. Claude Code) are explicitly allowed **only** if they follow the strict review protocol defined in:
+
+**docs/AI_REVIEW_QUESTIONNAIRE.md**
+
+This questionnaire enforces:
+
+- senior-level protocol engineering perspective,
+- strict spec reading (no invention, no redesign),
+- invariant- and boundary-focused critique,
+- structured, actionable findings.
+
+AI reviews **must not** introduce:
+- tokenomics,
+- roadmap suggestions,
+- architectural redesign,
+- speculative features.
+
+AI output that does not follow the defined format or violates scope
+will be ignored.
+
+The goal of AI-assisted review is **to surface blind spots and
+consistency issues**, not to replace human judgment.
+
 ## How to submit feedback
 
 - Use **GitHub Issues** for architectural or security observations.
