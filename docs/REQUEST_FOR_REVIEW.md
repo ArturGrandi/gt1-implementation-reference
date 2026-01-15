@@ -42,6 +42,16 @@ Primary reference:
 
 ---
 
+### Canonical temporal units
+
+All questions related to time, temporal invariants, conversion rules, or verification references
+**MUST** use the canonical definitions provided in:
+
+→ `docs/CANONICAL_UNITS.md`
+
+This document is the **single authoritative source of truth** for GT 1.0 temporal units.
+No alternative or implicit time definitions should be assumed during review.
+
 ### 2. Security & failure containment
 - Oracle failure handling
 - Gas depletion behavior
