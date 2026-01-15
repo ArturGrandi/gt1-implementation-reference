@@ -3,6 +3,18 @@
 **Status:** Authoritative · Clarification-only  
 **Scope:** Temporal primitives only (no economic redesign)
 
+---
+
+### Executable reference (non-normative)
+
+For reviewer convenience, an executable reference implementation of the canonical
+time unit definitions is provided here:
+
+- `reference/time_units.py`
+
+This file is **non-normative** and exists solely to mirror the canonical definitions
+in an executable form.  
+In case of any discrepancy, **this document remains authoritative**.
 This document defines the minimal canonical temporal units used by GT 1.0
 to make invariants, verification references, and diagrams machine-checkable.
 
