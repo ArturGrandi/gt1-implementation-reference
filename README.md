@@ -83,6 +83,16 @@ Canonical documents live in `/spec`:
 **Code must follow spec.  
 Spec does not follow code.**
 
+Canonical temporal units are defined in:
+
+- `docs/CANONICAL_UNITS.md` (authoritative, normative)
+
+An executable, non-normative mirror is provided for review convenience only:
+
+- `reference/time_units.py`
+
+In case of any discrepancy, **documentation prevails**.
+
 ---
 
 ## How to start (recommended)
@@ -93,6 +103,12 @@ If you are new here, begin with:
 
 It provides a 10-minute guided path through the system.
 
+For temporal semantics and invariants, review in this order:
+
+1. `docs/CANONICAL_UNITS.md`
+2. `reference/time_units.py` (executable mirror)
+3. Relevant sections in `spec/time_domain.md`
+   
 ---
 
 ## Research Review (Single Entry Point)
