@@ -166,3 +166,23 @@ where **time is not a UI artifact, but a first-class economic unit**.
 
 If you are interested in correctness, invariants, and long-horizon systems —
 you are in the right place.
+
+---
+
+## Related research (contextual, non-normative)
+
+GT 1.0 is part of a broader research track exploring
+formula-constrained and non-governance-based economic systems.
+
+The following publications provide **theoretical and methodological context only**
+and do **not** define protocol semantics, invariants, genesis parameters,
+or any normative rules for GT 1.0:
+
+- *Time as a Non-Monetary Economic Primitive*  
+  Zenodo (CERN) — DOI: https://doi.org/10.5281/zenodo.18190386
+
+- *Formula-Constrained Economic Systems Without Governance Voting*  
+  Zenodo (CERN) — DOI: https://doi.org/10.5281/zenodo.18275133
+
+All authoritative and normative definitions for GT 1.0
+remain defined exclusively in this repository.
